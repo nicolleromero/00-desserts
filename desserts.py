@@ -34,11 +34,7 @@ class Cupcake:
     def scale_recipe(ingredients, amount):
         """Scale the list of ingredients by the given amount of cupcakes."""
 
-        scaled_ingredients = []
-        for ingredient in ingredients:
-            scaled_ingredients.append((ingredient[0], ingredient[1] * amount))
-
-        return scaled_ingredients
+        return [(ingredient[0], ingredient[1] * amount) for ingredient in ingredients]
 
     @classmethod
     def get(cls, name):
@@ -55,6 +51,13 @@ class Cupcake:
         return f'<Cupcake name="{self.name}" qty={self.qty}>'
 
 
+class Brownie(Cupcake):
+    """A brownie"""
+
+    def __init__(self, name, price):
+        super().__init__(name, 'chocolate', price)
+
+
 if __name__ == '__main__':
     import doctest
 
@@ -67,5 +70,6 @@ if __name__ == '__main__':
     if result.failed == 0:
         print('ALL TESTS PASSED')
 
-# test_cupcake = Cupcake()
-# test_cupcake
+# Tests for brownies class
+# yum = Brownie('yum', 3.50)
+# print(yum.flavor)
